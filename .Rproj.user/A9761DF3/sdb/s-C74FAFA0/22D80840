@@ -1,0 +1,17 @@
+{
+    "contents" : "\nmining <- function() {\n  library(XML)\n  library(RCurl)\n\n  data <- list()\n\n  #for( i in 1058:1060){\n  #    baseURL <- paste('bbs/StupidClown/index', i, '.html' , sep='')\n  #    html <- content(GET(\"https://www.ptt.cc/\" , path = baseURL),as = 'parsed')\n  #    url.list <- xpathSApply(html, \"//div[@class='title']/a[@href]\", xmlAttrs)\n  #    data <- rbind(data, paste('www.ptt.cc', url.list, sep=''))\n  #  }\n\n  for( i in 1058:1068){\n    tmp <- paste(i, '.html', sep='')\n    url <- paste('https://www.ptt.cc/bbs/StupidClown/index', tmp, sep='')\n    html <- htmlParse(getURL(url))\n    url.list <- xpathSApply(html, \"//div[@class='title']/a[@href]\", xmlAttrs)\n    data <- rbind(data, paste('https://www.ptt.cc', url.list, sep=''))\n  }\n  data <- unlist(data)\n\n  getdoc <- function(line){\n    start <- regexpr('https', line)[1]\n    end <- regexpr('html', line)[1]\n\n    if(start != -1 & end != -1){\n      url <- substr(line, start, end+3)\n      html <- htmlParse(getURL(url), encoding=\"\")\n      doc <- xpathSApply(html, \"//div[@id='main-content']\", xmlValue)\n      name <- strsplit(url, '/')[[1]][6]\n      write(doc, gsub('html', 'txt', name))\n    }\n  }\n\n  setwd(dir = \"doc/\")\n  sapply(data, getdoc)\n  setwd(dir = \"../\")\n\n  library(tm)\n  library(tmcn)\n  library(Rwordseg)\n\n  d.corpus <- Corpus(DirSource(\"doc\"), list(language = NA))\n\n  #看檔案\n  #inspect(d.corpus)\n  d.corpus <- tm_map(d.corpus, removePunctuation, mc.cores=1)\n  d.corpus <- tm_map(d.corpus, stripWhitespace)\n  d.corpus <- tm_map(d.corpus, removeNumbers)\n\n  d.corpus <- tm_map(d.corpus, function(word) {\n    gsub(\"[A-Za-z0-9]\", \"\", word)\n  })\n\n  #利用segmentCN來進行斷詞\n  d.corpus <- tm_map(d.corpus[1:100] , segmentCN , nature = TRUE)\n  d.corpus <- tm_map(d.corpus, function(sentence) {\n    noun <- lapply(sentence, function(w) {\n      #取出名詞\n      w[names(w) == \"n\"]\n    })\n    unlist(noun)\n  })\n  #d.corpus <- Corpus(VectorSource(d.corpus))\n  #Error in UseMethod(\"meta\", x) :\n  #no applicable method for 'meta' applied to an object of class \"character\"\n\n  d.corpus <- Corpus(DataframeSource(data.frame(as.character(d.corpus))))\n\n  #去除不需要的常見單字\n  myStopWords <- c(stopwordsCN(),  \"編輯\", \"時間\", \"標題\", \"發信\", \"實業\", \"作者\" ,'c')\n  d.corpus <- tm_map(d.corpus, removeWords, myStopWords)\n\n  tdm <- TermDocumentMatrix(d.corpus, control = list(wordLengths = c(5, Inf)))\n\n  library(wordcloud)\n  library(RColorBrewer)\n  pal2 <- brewer.pal(8,\"Dark2\")\n\n  m1 <- as.matrix(tdm)\n  v <- sort(rowSums(m1), decreasing = TRUE)\n  d <- data.frame(word = names(v), freq = v)\n  wordcloud(d$word, d$freq, min.freq = 10, random.order = F, ordered.colors = F, colors = pal2)\n\n}\n",
+    "created" : 1440657513652.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1147770986",
+    "id" : "22D80840",
+    "lastKnownWriteTime" : 1441015538,
+    "path" : "~/R-project/TextMining2/R/hello.R",
+    "project_path" : "R/hello.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "r_source"
+}

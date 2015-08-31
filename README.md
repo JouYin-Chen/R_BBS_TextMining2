@@ -12,7 +12,7 @@ http://davetang.org/muse/2013/04/06/using-the-r_twitter-package/
 
 url <- paste('www.ptt.cc/bbs/StupidClown/index', tmp, sep='')
 
-— 修改為
+#### 修改為
 
 url <- paste('http://www.ptt.cc/bbs/StupidClown/index', tmp, sep='')
 
@@ -22,13 +22,13 @@ getdoc的funtion中{
 
   start <- regexpr('www', line)[1]
   
-  — www修改為https
+  ### www修改為https
   
   start <- regexpr('https', line)[1]
 
   name <- strsplit(url, '/')[[1]][4]
   
-  — 4修改為6
+  ### 4修改為6
   
   name <- strsplit(url, '/')[[1]][6]
 
@@ -58,7 +58,7 @@ getdoc的funtion中{
 ##
 d.corpus <- Corpus(VectorSource(d.corpus))
 
-—　會產生錯誤訊息
+###　會產生錯誤訊息
 
 Error in UseMethod("meta", x) :
 

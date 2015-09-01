@@ -8,18 +8,18 @@ http://bbs.pinggu.org/thread-3546893-1-1.html<br />
 
 
 ##細節修正:
-url <- paste('www.ptt.cc/bbs/StupidClown/index', tmp, sep='')<br />
-    修改為<br />
-url <- paste('http://www.ptt.cc/bbs/StupidClown/index', tmp, sep='')<br />
+    url <- paste('www.ptt.cc/bbs/StupidClown/index', tmp, sep='')
+        修改為
+    url <- paste('http://www.ptt.cc/bbs/StupidClown/index', tmp, sep='')
 
 ##getdoc的funtion中{
-    start <- regexpr('www', line)[1]<br />
-      www修改為https<br />
-    start <- regexpr('https', line)[1]<br /><br />
+    start <- regexpr('www', line)[1]
+      www修改為https
+    start <- regexpr('https', line)[1]
 
-    name <- strsplit(url, '/')[[1]][4]<br />
+    name <- strsplit(url, '/')[[1]][4]
       4修改為6<br />
-    name <- strsplit(url, '/')[[1]][6]<br />
+    name <- strsplit(url, '/')[[1]][6]
   }
 
 ##tncm下載&安裝

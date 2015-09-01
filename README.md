@@ -1,13 +1,10 @@
 # R_BBS_TextMining2
 
 ##參考資料：
-http://rstudio-pubs-static.s3.amazonaws.com/12422_b2b48bb2da7942acaca5ace45bd8c60c.html
-
-http://onertipaday.blogspot.tw/2011/07/word-cloud-in-r.html
-
-http://davetang.org/muse/2013/04/06/using-the-r_twitter-package/
-
-http://bbs.pinggu.org/thread-3546893-1-1.html
+  http://rstudio-pubs-static.s3.amazonaws.com/12422_b2b48bb2da7942acaca5ace45bd8c60c.html <br />
+  http://onertipaday.blogspot.tw/2011/07/word-cloud-in-r.html <br />
+  http://davetang.org/muse/2013/04/06/using-the-r_twitter-package/ <br />
+  http://bbs.pinggu.org/thread-3546893-1-1.html<br />
 
 
 ##細節修正:

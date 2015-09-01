@@ -18,7 +18,7 @@ http://bbs.pinggu.org/thread-3546893-1-1.html<br />
     start <- regexpr('https', line)[1]
 
     name <- strsplit(url, '/')[[1]][4]
-      4修改為6<br />
+      4修改為6
     name <- strsplit(url, '/')[[1]][6]
   }
 

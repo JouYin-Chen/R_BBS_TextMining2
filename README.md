@@ -7,6 +7,8 @@ http://onertipaday.blogspot.tw/2011/07/word-cloud-in-r.html
 
 http://davetang.org/muse/2013/04/06/using-the-r_twitter-package/
 
+http://bbs.pinggu.org/thread-3546893-1-1.html
+
 
 ##細節修正:
 

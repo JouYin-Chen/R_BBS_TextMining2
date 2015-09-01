@@ -23,8 +23,8 @@ http://bbs.pinggu.org/thread-3546893-1-1.html<br />
   }
 
 ##tncm下載&安裝
-    https://r-forge.r-project.org/R/?group_id=1571<br />
-    install.packages("~/../Downloads/tmcn_0.1-4.zip", repos=NULL, type="source")<br />
+    https://r-forge.r-project.org/R/?group_id=1571
+    install.packages("~/../Downloads/tmcn_0.1-4.zip", repos=NULL, type="source")
   
 ##Rwordseg下載&安裝
   電腦必須先安裝java<br />

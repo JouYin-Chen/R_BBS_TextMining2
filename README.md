@@ -35,7 +35,7 @@ http://bbs.pinggu.org/thread-3546893-1-1.html<br />
 ##VectorSource
   d.corpus <- Corpus(VectorSource(d.corpus))<br />
 　會產生錯誤訊息<br />
-　  Error in UseMethod("meta", x) :<br />
+　      Error in UseMethod("meta", x) :<br />
         no applicable method for 'meta' applied to an object of class "character"<br />
 
   以下方指令代替，但效果並不佳，會出現不需要的單字。<br />
